@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MyGame03",
+            "request": "launch",
+            "mainClass": "cn.edu.neaugame.MyGame03",
+            "projectName": "MyGame03"
+        }
+    ]
+}
