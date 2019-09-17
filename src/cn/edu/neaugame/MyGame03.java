@@ -2,6 +2,8 @@ package cn.edu.neaugame;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -16,10 +18,10 @@ public class MyGame03 extends JFrame {
     Plane plane2 = new Plane(planeImg, 350, 250);
     Plane plane3 = new Plane(planeImg, 450, 250);
 
-    public void paint(Graphics g) { //自动被调用，相当于一个画笔
+    public void paint(Graphics g) { // 自动被调用，相当于一个画笔
 
         g.drawImage(bg, 0, 0, null);
-        plane.drawSelf(g);//画飞机
+        plane.drawSelf(g);// 画飞机
         plane2.drawSelf(g);
         plane3.drawSelf(g);
 
@@ -29,7 +31,7 @@ public class MyGame03 extends JFrame {
         @Override
         public void run() {
             while (true) {
-                System.out.println("窗口被重画了一次");
+                // System.out.println("窗口被重画了一次");
                 repaint();
 
                 try {
@@ -40,6 +42,24 @@ public class MyGame03 extends JFrame {
                 }
             }
         }
+    }
+
+    class KeyMonitor extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            // TODO Auto-generated method stub
+            System.out.println(e.getKeyCode());
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            // TODO Auto-generated method stub
+            super.keyReleased(e);
+        }
+
+        
+
     }
 
     public void launchFrame() {
@@ -56,11 +76,15 @@ public class MyGame03 extends JFrame {
         });
 
         new PaintThread().start(); // 启动重画窗口的线程
+        addKeyListener(new KeyMonitor()); //增加键盘的监听
     }
 
     public static void main(String[] args) {
         MyGame03 f = new MyGame03();
         f.launchFrame();
     }
+
+
+
 
 }
