@@ -9,16 +9,19 @@ import javax.swing.JFrame;
 
 public class MyGame03 extends JFrame {
 
-    Image plane = GameUtil.getImage("images/plane.png");
+    Image planeImg = GameUtil.getImage("images/plane.png");
     Image bg = GameUtil.getImage("images/bg.jpg");
 
-    int planeX = 250, planeY = 250;
+    Plane plane = new Plane(planeImg, 250, 250);
+    Plane plane2 = new Plane(planeImg, 350, 250);
+    Plane plane3 = new Plane(planeImg, 450, 250);
 
-    public void paint(Graphics g) {
+    public void paint(Graphics g) { //自动被调用，相当于一个画笔
 
         g.drawImage(bg, 0, 0, null);
-        g.drawImage(plane, planeX, planeY, null);
-        planeX++;
+        plane.drawSelf(g);//画飞机
+        plane2.drawSelf(g);
+        plane3.drawSelf(g);
 
     }
 
