@@ -22,8 +22,6 @@ public class MyGame03 extends JFrame {
 
         g.drawImage(bg, 0, 0, null);
         plane.drawSelf(g);// 画飞机
-        plane2.drawSelf(g);
-        plane3.drawSelf(g);
 
     }
 
@@ -48,14 +46,12 @@ public class MyGame03 extends JFrame {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            // TODO Auto-generated method stub
-            System.out.println(e.getKeyCode());
+            plane.addDirection(e);
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            // TODO Auto-generated method stub
-            super.keyReleased(e);
+            plane.minusDirection(e);
         }
 
         
