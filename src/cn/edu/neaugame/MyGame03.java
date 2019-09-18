@@ -61,7 +61,7 @@ public class MyGame03 extends JFrame {
     public void launchFrame() {
         this.setTitle("Derek的第一个游戏");
         this.setVisible(true);
-        this.setSize(500, 500);
+        this.setSize(Constant.GameFrame_WIDTH, Constant.GameFrame_HEIGHT);
         this.setLocation(300, 300);
 
         this.addWindowListener(new WindowAdapter() {
