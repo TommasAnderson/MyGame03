@@ -11,17 +11,22 @@ import javax.swing.JFrame;
 
 public class MyGame03 extends JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     Image planeImg = GameUtil.getImage("images/plane.png");
     Image bg = GameUtil.getImage("images/bg.jpg");
 
     Plane plane = new Plane(planeImg, 250, 250);
-    Plane plane2 = new Plane(planeImg, 350, 250);
-    Plane plane3 = new Plane(planeImg, 450, 250);
+    Shell shell = new Shell();
 
     public void paint(Graphics g) { // 自动被调用，相当于一个画笔
 
         g.drawImage(bg, 0, 0, null);
         plane.drawSelf(g);// 画飞机
+        
+        
 
     }
 
