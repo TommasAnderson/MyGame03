@@ -7,9 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JFrame;
+import java.awt.Frame;
 
-public class MyGame03 extends JFrame {
+public class MyGame03 extends Frame {
 
     /**
      *
@@ -19,13 +19,21 @@ public class MyGame03 extends JFrame {
     Image bg = GameUtil.getImage("images/bg.jpg");
 
     Plane plane = new Plane(planeImg, 250, 250);
-    Shell shell = new Shell();
+    // Shell shell = new Shell();
+    Shell[] shells = new Shell[50];
 
     public void paint(Graphics g) { // 自动被调用，相当于一个画笔
 
         g.drawImage(bg, 0, 0, null);
         plane.drawSelf(g);// 画飞机
+
+        for(int i=0;i<shells.length;i++){
+            shells[i].draw(g);
+        }
+
+        // shell.draw(g);//画炮弹
         
+           
         
 
     }
@@ -78,12 +86,30 @@ public class MyGame03 extends JFrame {
 
         new PaintThread().start(); // 启动重画窗口的线程
         addKeyListener(new KeyMonitor()); //增加键盘的监听
+
+        //初始化50个炮弹
+        for (int i = 0; i < shells.length; i++) {
+            shells[i]=new Shell();
+        }
+
     }
 
     public static void main(String[] args) {
         MyGame03 f = new MyGame03();
         f.launchFrame();
     }
+
+    private Image offScreenImage = null;
+
+    public void update(Graphics g){
+        if (offScreenImage == null) 
+            offScreenImage = this.createImage(Constant.GameFrame_WIDTH,Constant.GameFrame_HEIGHT);
+        Graphics gOff = offScreenImage.getGraphics();
+        paint(gOff);
+        g.drawImage(offScreenImage,0,0,null);
+        
+    }
+
 
 
 
