@@ -19,7 +19,11 @@ public class Shell extends GameObject {
 	}
 
 	public void draw(Graphics g){
-		
+		Color c=g.getColor();
+		g.setColor(Color.Yellow);
+
+		g.fillOval()
+
 	}
 
 	
