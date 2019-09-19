@@ -22,6 +22,8 @@ public class MyGame03 extends Frame {
     // Shell shell = new Shell();
     Shell[] shells = new Shell[50];
 
+    Explode bao;
+
     public void paint(Graphics g) { // 自动被调用，相当于一个画笔
 
         g.drawImage(bg, 0, 0, null);
@@ -34,8 +36,14 @@ public class MyGame03 extends Frame {
             boolean peng = shells[i].getRect().intersects(plane.getRect());
 
             if (peng) {
-                System.out.println("相撞了！！！");
+                // System.out.println("相撞了！！！");
                 plane.live = false;
+
+                if (bao == null) {
+                    bao = new Explode(plane.x, plane.y);
+                    
+                }
+                bao.draw(g);
             }
 
         }
