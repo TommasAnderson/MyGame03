@@ -29,11 +29,19 @@ public class MyGame03 extends Frame {
 
         for(int i=0;i<shells.length;i++){
             shells[i].draw(g);
+
+            //飞机和炮弹的碰撞检测
+            boolean peng = shells[i].getRect().intersects(plane.getRect());
+
+            if (peng) {
+                System.out.println("相撞了！！！");
+                plane.live = false;
+            }
+
         }
 
-        // shell.draw(g);//画炮弹
-        
-           
+         // shell.draw(g);//画炮弹
+            
         
 
     }

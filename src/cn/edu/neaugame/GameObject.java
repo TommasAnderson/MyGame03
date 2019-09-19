@@ -34,6 +34,7 @@ public class GameObject {
 
     }
 
+    //返回物体所在的矩形，便于后续的碰撞检测
     public Rectangle getRect(){
         return new Rectangle((int)x, (int)y, width, height);
     }
