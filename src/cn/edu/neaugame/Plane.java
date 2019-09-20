@@ -27,7 +27,10 @@ public class Plane extends GameObject {
             if (down) {
                 y += speed;
             }
-        }
+        }else {
+			x = 0;
+			y = 0;
+		}
 
     }
 
